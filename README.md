@@ -13,4 +13,4 @@ bun run build
 This will go through the process of building the website with [Vite](https://vitejs.dev/guide/static-deploy.html).
 
 # Deploying
-This website is deployed by [Cloudflare Pages](https://pages.cloudflare.com/), by default to personal-website-az7.pages.dev
+This website is deployed by [Cloudflare Pages](https://pages.cloudflare.com/), by default to [personal-website-az7.pages.dev](https://personal-website-az7.pages.dev/)
