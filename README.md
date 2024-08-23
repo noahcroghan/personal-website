@@ -2,6 +2,7 @@
 To setup the dev environment, install dependencies:
 - [Node.js](https://nodejs.org)
 - [Bun](https://bun.sh)
+
 You should be able to use `npm` instead of `bun` if you would like, but it will be slower.
 
 # Building
