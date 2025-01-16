@@ -25,4 +25,4 @@ Set framework to none and use Vite's [build instructions](https://vite.dev/guide
 
 # Credits
 
-Icons are all supplied by [Bootstrap Icons](https://icons.getbootstrap.com/)
+Icons are all supplied by [Bootstrap Icons](https://icons.getbootstrap.com/).
