@@ -1,11 +1,23 @@
 # Development
 
-To setup the dev environment, install dependencies:
+To setup the dev environment, install dependencies on your local machine:
 
 - [Node.js](https://nodejs.org)
 - [Bun](https://bun.sh)
 
-You should also be able to use `npm` instead of `bun` it will just be slower.
+You shouldn't be required to use Bun, and you can replace all `bun` commands with `npm`, but this will be slower.
+
+Install modules with the following command:
+
+```
+bun install
+```
+
+Then, you can run the development server with the following:
+
+```
+bun run dev
+```
 
 # Building
 
@@ -25,4 +37,4 @@ Set framework to none and use Vite's [build instructions](https://vite.dev/guide
 
 # Credits
 
-Icons are all supplied by [Bootstrap Icons](https://icons.getbootstrap.com/).
+Icons are courtesy of [Bootstrap Icons](https://icons.getbootstrap.com/).
