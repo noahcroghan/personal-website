@@ -10,9 +10,9 @@ To build the website, run the following:
 ```
 bun run build
 ```
-This will go through the process of building the website with [Vite](https://vitejs.dev/guide/static-deploy.html).
+This will go through the process of building the website with [Vite](https://vite.dev/).
 
 # Deploying
 This website is deployed by [Cloudflare Pages](https://pages.cloudflare.com/).
 
-Set framework to none and use the build instructions from up top.
+Set framework to none and use Vite's [build instructions](https://vite.dev/guide/static-deploy.html).
