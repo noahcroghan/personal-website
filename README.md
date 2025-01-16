@@ -38,3 +38,4 @@ Set framework to none and use Vite's [build instructions](https://vite.dev/guide
 # Credits
 
 Icons are courtesy of [Bootstrap Icons](https://icons.getbootstrap.com/).
+Soundcloud logo courtesy of [SoundCloud media kit](https://press.soundcloud.com/media_kits/228462/).
