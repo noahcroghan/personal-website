@@ -5,7 +5,7 @@
 }
 body {
   font-family: "Space Mono", monospace;
-  background-color: rgb(12, 3, 10);
+  background-color: black;
   color: red;
   font-weight: bold;
   display: flex;
@@ -39,10 +39,8 @@ body {
 #links img {
   width: 26px;
   height: 26px;
-  filter: invert(13%) sepia(92%) saturate(7414%) hue-rotate(4deg)
-    brightness(99%) contrast(115%);
+  transition: filter 100ms ease-in-out;
 }
 #links img:hover {
-  filter: invert(10%) sepia(54%) saturate(5160%) hue-rotate(355deg)
-    brightness(103%) contrast(118%);
+  filter: drop-shadow(0 0 25px purple);
 }
