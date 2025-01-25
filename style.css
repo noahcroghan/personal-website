@@ -11,6 +11,16 @@ body {
   align-items: center;
   height: 100vh;
 }
+.noise::before {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  content: "";
+  opacity: 0.05;
+  background-image: url("/noise.gif");
+}
 .container {
   animation: glow 1s ease-in-out infinite alternate;
 }
@@ -44,16 +54,4 @@ body {
 #links img:hover {
   filter: invert(16%) sepia(65%) saturate(7488%) hue-rotate(358deg)
     brightness(90%) contrast(124%) drop-shadow(0 0 50px red);
-}
-.noise::before {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  content: "";
-  opacity: 0.05;
-  z-index: 1000;
-  pointer-events: none;
-  background-image: url(noise.gif);
 }
