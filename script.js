@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
   const elements = document.querySelectorAll(".hack");
-  const alphabet = "abcdefghijklmnopqrstuvwxyz";
+  const alphabet =
+    "abcdefghijklmnopqrstuvwxyz1234567890`~!@#$%^&*()-=_+[]{};':\",.<>/?\\|";
   const revealInterval = 50;
 
   elements.forEach((element, index) => {
