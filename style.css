@@ -1,21 +1,19 @@
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 body {
   font-family: "Space Mono", monospace;
   background-color: black;
   color: red;
-  font-weight: bold;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  text-align: center;
+}
+.container {
   animation: glow 1s ease-in-out infinite alternate;
 }
-
 @keyframes glow {
   from {
     filter: drop-shadow(0 0 0.75rem red);
@@ -39,8 +37,23 @@ body {
 #links img {
   width: 26px;
   height: 26px;
-  transition: filter 100ms ease-in-out;
+  transition: filter 200ms ease-in-out;
+  filter: invert(16%) sepia(65%) saturate(7488%) hue-rotate(358deg)
+    brightness(90%) contrast(124%);
 }
 #links img:hover {
-  filter: drop-shadow(0 0 25px purple);
+  filter: invert(16%) sepia(65%) saturate(7488%) hue-rotate(358deg)
+    brightness(90%) contrast(124%) drop-shadow(0 0 50px red);
+}
+.noise::before {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  content: "";
+  opacity: 0.05;
+  z-index: 1000;
+  pointer-events: none;
+  background-image: url(noise.gif);
 }
