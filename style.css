@@ -21,6 +21,9 @@ body {
   opacity: 0.05;
   background-image: url("/noise.gif");
 }
+h1 {
+  font-size: 36px;
+}
 .container {
   animation: glow 1s ease-in-out infinite alternate;
 }
