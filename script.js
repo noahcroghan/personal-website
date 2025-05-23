@@ -1,5 +1,3 @@
-document.title = "noah_croghan";
-
 document.addEventListener("DOMContentLoaded", function () {
   const elements = document.querySelectorAll(".hack");
   const alphabet =
