@@ -1,60 +1,69 @@
 * {
-  margin: 0;
+  box-sizing: border-box;
   padding: 0;
+  margin: 0;
 }
 body {
   font-family: "Space Mono", monospace;
   background-color: black;
-  color: red;
+  color: white;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
 }
-.noise::before {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  content: "";
-  opacity: 0.05;
-  background-image: url("/noise.gif");
-}
-h1 {
-  font-size: 38px;
-}
-.container {
-  animation: glow 1s ease-in-out infinite alternate;
-}
-@keyframes glow {
-  from {
-    filter: drop-shadow(0 0 0.75rem red);
-  }
-  to {
-    filter: drop-shadow(0 0 1rem red);
-  }
-}
 ::selection {
   background-color: rgb(127, 0, 0);
 }
-#links {
-  margin-top: 8px;
+#headshot {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid white;
+  margin-right: 2rem;
 }
+
+.info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+h1 {
+  font-size: 36px;
+  margin-bottom: 0.75rem;
+}
+
 #links ul {
   list-style: none;
   display: flex;
   gap: 1rem;
-  justify-content: center;
 }
+
 #links img {
-  width: 32px;
-  height: 32px;
-  transition: filter 200ms ease-in-out;
-  filter: invert(16%) sepia(65%) saturate(7488%) hue-rotate(358deg)
-    brightness(90%) contrast(124%);
+  width: 28px;
+  height: 28px;
+  filter: invert(100%);
+  transition: transform 0.2s ease-in-out, filter 0.2s ease-in-out;
 }
+
 #links img:hover {
-  filter: invert(16%) sepia(65%) saturate(7488%) hue-rotate(358deg)
-    brightness(90%) contrast(124%) drop-shadow(0 0 50px red);
+  transform: scale(1.1);
+}
+@media (max-width: 600px) {
+  .container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .info {
+    align-items: center;
+  }
+
+  #headshot {
+    display: none;
+  }
 }
