@@ -45,8 +45,9 @@ h1 {
 #links img {
   width: 28px;
   height: 28px;
-  filter: invert(100%);
-  transition: transform 0.2s ease-in-out, filter 0.2s ease-in-out;
+  transition:
+    transform 0.2s ease-in-out,
+    filter 0.2s ease-in-out;
 }
 
 #links img:hover {
