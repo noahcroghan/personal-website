@@ -55,7 +55,7 @@ h2 {
 
 #links .bi {
   display: inline-block;
-  transform: translateZ(0); /* Fix jitteriness on hover */
+  will-change: transform; /* Fix jitteriness on hover */
   font-size: 30px;
   color: var(--foreground-color);
   transition:
