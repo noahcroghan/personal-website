@@ -1,3 +1,9 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css");
+:root {
+  --foreground-color: #f2f0f0;
+  --background-color: rgb(71, 59, 59);
+  --accent-color: #d08484;
+}
 * {
   box-sizing: border-box;
   padding: 0;
@@ -5,22 +11,23 @@
 }
 body {
   font-family: "Space Mono", monospace;
-  background-color: black;
-  color: white;
+  background-color: var(--background-color);
+  color: var(--foreground-color);
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
+  filter: drop-shadow(0 2px 2px black);
 }
 ::selection {
-  background-color: rgb(127, 0, 0);
+  background-color: var(--accent-color);
 }
 #headshot {
   width: 120px;
   height: 120px;
   object-fit: cover;
   border-radius: 50%;
-  border: 2px solid white;
+  border: 2px solid var(--foreground-color);
   margin-right: 2rem;
 }
 
@@ -32,8 +39,12 @@ body {
 }
 
 h1 {
-  font-size: 36px;
+  font-size: 38px;
   margin-bottom: 0.75rem;
+}
+h2 {
+  font-weight: 300;
+  font-size: 20px;
 }
 
 #links ul {
@@ -42,16 +53,26 @@ h1 {
   gap: 1rem;
 }
 
-#links img {
-  width: 28px;
-  height: 28px;
+#links .bi {
+  display: inline-block;
+  transform: translateZ(0); /* Fix jitteriness on hover */
+  font-size: 30px;
+  color: var(--foreground-color);
   transition:
     transform 0.2s ease-in-out,
+    color 0.2s ease-in-out,
     filter 0.2s ease-in-out;
 }
 
-#links img:hover {
+#links .bi:hover {
   transform: scale(1.1);
+  color: var(--accent-color);
+  filter: drop-shadow(2px 2px 2px black);
+}
+footer {
+  text-align: center;
+  position: absolute;
+  bottom: 2em;
 }
 @media (max-width: 600px) {
   .container {
