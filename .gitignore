@@ -22,3 +22,18 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+package-lock.json
+
+# Bun lockfile
+bun.lockb
+bun.lock
+
+/dist
+/build
+.env
+.env*.local
+
+# Wrangler
+.dev.vars
+.wrangler/
