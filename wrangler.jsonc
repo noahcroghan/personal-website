@@ -1,0 +1,6 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "personal-website",
+  "compatibility_date": "2025-01-28",
+  "main": "src/index.js",
+}
