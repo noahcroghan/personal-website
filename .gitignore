@@ -23,13 +23,6 @@ dist-ssr
 *.sln
 *.sw?
 
-package-lock.json
-
-# Bun lockfile
-bun.lockb
-bun.lock
-
-/dist
 /build
 .env
 .env*.local
@@ -37,3 +30,8 @@ bun.lock
 # Wrangler
 .dev.vars
 .wrangler/
+
+# Lock files from other package managers
+bun.lock
+yarn.lock
+pnpm-lock.yaml
