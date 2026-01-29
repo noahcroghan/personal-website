@@ -70,9 +70,20 @@ h2 {
   filter: drop-shadow(2px 2px 2px black);
 }
 footer {
-  text-align: center;
   position: absolute;
   bottom: 2em;
+}
+#music-status {
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.075);
+  padding: 25px;
+  border-radius: 25px;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+
+#music-status.is-visible {
+  opacity: 1;
 }
 @media (max-width: 600px) {
   .container {
