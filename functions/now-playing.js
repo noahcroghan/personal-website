@@ -1,20 +1,5 @@
-export default {
-  async fetch(request, env) {
-    const url = new URL(request.url);
-
-    if (url.pathname === "/now-playing") {
-      return handleNowPlaying(env);
-    }
-
-    if (env.ASSETS) {
-      return env.ASSETS.fetch(request);
-    }
-
-    return new Response("Not found", { status: 404 });
-  },
-};
-
-async function handleNowPlaying(env) {
+export async function onRequest(context) {
+  const { env } = context;
   const apiKey = env.LASTFM_API_KEY;
 
   if (!apiKey) {
@@ -35,7 +20,8 @@ async function handleNowPlaying(env) {
 
     return Response.json(data, {
       headers: {
-        "Cache-Control": "no-cache",
+        "Cache-Control": "public, max-age=30",
+        "Access-Control-Allow-Origin": "*",
       },
     });
   } catch (error) {
