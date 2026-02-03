@@ -14,7 +14,7 @@ LASTFM_API_KEY=your_actual_key_here
 
 3. Install dependencies on your local machine:
 
-- [Node.js](https://nodejs.org)[^1]
+- [Node.js version ≥20](https://nodejs.org)[^1]
 
 4. Install modules with the following command:
 
@@ -40,12 +40,12 @@ This will go through the process of building the website with [Vite](https://vit
 
 # Deploying
 
-- This website is deployed by [Cloudflare Pages](https://pages.cloudflare.com/).
+- This website is deployed on [Cloudflare Pages](https://pages.cloudflare.com/).
   - The website uses a secret key in your dashboard for Last.fm connection.
-- Set framework to none and use Vite's [build instructions](https://vite.dev/guide/static-deploy.html).
+- Set the framework to none and use Vite's [build instructions](https://vite.dev/guide/static-deploy.html).
 
 # Credits
 
 Icons are courtesy of [Bootstrap Icons](https://icons.getbootstrap.com/).
 
-[^1]: You can use [Bun](https://bun.com/) as a drop-in replacement for `npm`, which is much faster.
+[^1]: You can also install [Bun](https://bun.sh/) as a drop-in replacement for `npm`, which is much faster.
