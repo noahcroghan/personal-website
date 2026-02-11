@@ -1,4 +1,3 @@
-@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css");
 :root {
   --foreground-color: #f2f0f0;
   --background-color: rgb(71, 59, 59);
@@ -54,9 +53,8 @@ h2 {
 }
 
 #links .bi {
-  display: inline-block;
-  will-change: transform; /* Fix jitteriness on hover */
-  font-size: 30px;
+  width: 2em;
+  height: 2em;
   color: var(--foreground-color);
   transition:
     transform 0.2s ease-in-out,
