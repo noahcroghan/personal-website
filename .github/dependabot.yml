@@ -4,7 +4,9 @@ updates:
     directory: "/"
     schedule:
       interval: "weekly"
+    allow:
+      - update-type: ["version-update:semver-patch", "version-update:semver-minor"]  # Safe updates only
     groups:
       npm-dependencies:
-        patterns: ["*"]
-        update-type: ["version-update:semver-minor", "version-update:semver-patch"]  # Skip majors
+        patterns:
+          - "*"
