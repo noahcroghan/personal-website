@@ -11,8 +11,8 @@
     "deploy": "npm run build && wrangler pages deploy dist"
   },
   "devDependencies": {
-    "vite": "^8.0.12",
-    "wrangler": "^4.90.1"
+    "vite": "^8.0.13",
+    "wrangler": "^4.93.0"
   },
   "dependencies": {
     "bootstrap-icons": "^1.13.1"
