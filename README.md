@@ -1,51 +1,78 @@
-# Development
+# Personal Website
 
-1. Clone the Git repository
+This repository contains the code for my personal link-in-bio site,
+featuring social links and a real-time Last.fm "now playing" widget.
+
+## Table of Contents
+
+- [Personal Website](#personal-website)
+  - [Table of Contents](#table-of-contents)
+  - [Preview](#preview)
+  - [Local Development](#local-development)
+  - [Building](#building)
+  - [Deploying](#deploying)
+  - [Credits](#credits)
+  - [License](#license)
+
+## Preview
+
+![Preview](./docs/preview.png)
+
+## Local Development
+
+1: Clone and enter the project:
 
 ```bash
 git clone https://github.com/noahcroghan/personal-website.git
+cd personal-website
 ```
 
-2. Create a file in the project root named `.dev.vars`, and paste in your [Last.fm API Key](https://www.last.fm/api/accounts)
+2: Set up environment variables:
 
-```env
-LASTFM_API_KEY=your_actual_key_here
-```
+Copy `.env.example` to `.env` and fill in your [Last.fm API key](https://www.last.fm/api/accounts)
+and username.
 
-3. Install dependencies on your local machine:
-
-- [Node.js version ≥20](https://nodejs.org)[^1]
-
-4. Install modules with the following command:
+3: Install [dependencies](https://bun.sh) and start the dev server:
 
 ```bash
-npm install
+bun install
+bun run dev
 ```
 
-5. Finally, you can run the development server with the following:
-
-```bash
-npm run dev
-```
-
-# Building
+## Building
 
 To build the website, run the following:
 
 ```bash
-npm run build
+bun run build
 ```
 
-This will go through the process of building the website with [Vite](https://vite.dev/).
+This will go through the process of building the website with [Vite](https://vite.dev).
+It also copies `functions/` into `dist/`, which Cloudflare Pages compiles into a
+Function on deploy.
 
-# Deploying
+The site is written in [TypeScript](https://www.typescriptlang.org). Vite strips
+types during the build without checking them, and Cloudflare Pages compiles the
+Function in `functions/` on deploy, so run the type checker separately:
 
-- This website is deployed on [Cloudflare Pages](https://pages.cloudflare.com/).
-  - The website uses a secret key in your dashboard for Last.fm connection.
-- Set the framework to none and use Vite's [build instructions](https://vite.dev/guide/static-deploy.html).
+```bash
+bun run typecheck
+```
 
-# Credits
+## Deploying
 
-Icons are courtesy of [Bootstrap Icons](https://icons.getbootstrap.com/).
+- This website is deployed using [Cloudflare Pages](https://pages.cloudflare.com).
+  - Set `LASTFM_API_KEY` and `LASTFM_USERNAME` as Pages Function secrets in the
+    project's dashboard settings, so `functions/now-playing.ts` can read them
+    server-side at request time. These are never exposed to the client.
+- Set the framework to none and follow Vite's [build instructions](https://vite.dev/guide/static-deploy.html).
 
-[^1]: You can also install [Bun](https://bun.sh/) as a drop-in replacement for `npm`, which is much faster.
+## Credits
+
+- Icons are courtesy of [Bootstrap Icons](https://icons.getbootstrap.com/).
+- Font used is [Space Mono](https://fonts.google.com/specimen/Space+Mono).
+  - Font License: [SIL Open Font License, Version 1.1](https://openfontlicense.org/open-font-license-official-text).
+
+## License
+
+[MIT License](./LICENSE).
