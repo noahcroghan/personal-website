@@ -44,6 +44,7 @@ h1 {
 h2 {
   font-weight: 300;
   font-size: 20px;
+  margin-bottom: 0.33rem;
 }
 
 #links ul {
@@ -83,6 +84,19 @@ footer {
 #music-status.is-visible {
   opacity: 1;
 }
+
+a {
+    color: var(--foreground-color);
+}
+
+#not-found-links {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding-top: 10px;
+    list-style-type: none;
+}
+
 @media (max-width: 600px) {
   .container {
     flex-direction: column;
@@ -92,9 +106,21 @@ footer {
 
   .info {
     align-items: center;
+    text-align: center;
   }
 
   #headshot {
     display: none;
+  }
+
+  #not-found-links {
+      display: block;
+      text-align: center;
+      width: 100%;
+      padding-top: 20px;
+      list-style-type: none;
+  }
+  #not-found-links li {
+      padding-bottom: 20px;
   }
 }
