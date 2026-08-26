@@ -2,6 +2,7 @@
   --foreground-color: #f2f0f0;
   --background-color: rgb(71, 59, 59);
   --accent-color: #d08484;
+  --shadow-color: black;
 }
 * {
   box-sizing: border-box;
@@ -16,7 +17,8 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  filter: drop-shadow(0 2px 2px black);
+  position: relative;
+  text-shadow: 0 2px 2px var(--shadow-color);
 }
 ::selection {
   background-color: var(--accent-color);
@@ -28,6 +30,7 @@ body {
   border-radius: 50%;
   border: 2px solid var(--foreground-color);
   margin-right: 2rem;
+  box-shadow: 0 2px 2px var(--shadow-color);
 }
 
 .info {
@@ -53,20 +56,39 @@ h2 {
   gap: 1rem;
 }
 
+#links a {
+  display: inline-flex;
+  transform: scale(1);
+  transition: transform 0.2s ease-in-out;
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
 #links .bi {
+  display: block;
   width: 2em;
   height: 2em;
   color: var(--foreground-color);
+  filter: drop-shadow(0 2px 2px var(--shadow-color));
   transition:
-    transform 0.2s ease-in-out,
     color 0.2s ease-in-out,
     filter 0.2s ease-in-out;
 }
 
-#links .bi:hover {
+#links a:hover {
   transform: scale(1.1);
+}
+
+#links a:hover .bi {
   color: var(--accent-color);
-  filter: drop-shadow(2px 2px 2px black);
+  filter: drop-shadow(2px 2px 2px var(--shadow-color));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #links a,
+  #links .bi {
+    transition: none;
+  }
 }
 footer {
   position: absolute;
