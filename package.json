@@ -12,9 +12,9 @@
   },
   "devDependencies": {
     "typescript": "^7.0.2",
-    "vite": "^8.3.2"
+    "vite": "^8.3.4"
   },
   "dependencies": {
-    "bootstrap-icons": "^1.13.1"
+    "bootstrap-icons": "^1.13.2"
   }
 }
