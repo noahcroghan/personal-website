@@ -48,6 +48,12 @@ Function in `functions/` on deploy, so run the type checker separately:
 bun run typecheck
 ```
 
+Lint with [ESLint](https://eslint.org):
+
+```bash
+bun run lint
+```
+
 ## Deploying
 
 - This website is deployed using [Cloudflare Pages](https://pages.cloudflare.com).
