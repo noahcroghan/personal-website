@@ -6,11 +6,12 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && cp -R functions dist/",
+    "build": "vite build && shx cp -r functions dist/",
     "preview": "bun run build && vite preview",
     "typecheck": "tsc"
   },
   "devDependencies": {
+    "shx": "^0.4.0",
     "typescript": "^7.0.2",
     "vite": "^8.3.6"
   },
