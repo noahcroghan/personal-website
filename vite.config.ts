@@ -28,5 +28,5 @@ function lastFmProxy(env: Record<string, string>): Plugin {
 }
 
 export default defineConfig(({ mode }) => ({
-  plugins: [lastFmProxy(loadEnv(mode, process.cwd(), ""))],
+  plugins: [lastFmProxy(loadEnv(mode, ".", ""))],
 }));
