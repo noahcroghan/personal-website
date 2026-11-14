@@ -3,17 +3,6 @@
 This repository contains the code for my personal link-in-bio site,
 featuring social links and a real-time Last.fm "now playing" widget.
 
-## Table of Contents
-
-- [Personal Website](#personal-website)
-  - [Table of Contents](#table-of-contents)
-  - [Preview](#preview)
-  - [Local Development](#local-development)
-  - [Building](#building)
-  - [Deploying](#deploying)
-  - [Credits](#credits)
-  - [License](#license)
-
 ## Preview
 
 ![Preview](./docs/preview.png)
