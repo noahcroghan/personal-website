@@ -67,10 +67,6 @@ h2 {
 
 #links a {
   display: inline-flex;
-  transform: scale(1);
-  backface-visibility: hidden;
-  transition: transform 0.2s ease-in-out;
-  will-change: transform;
 }
 
 #links .bi {
@@ -84,17 +80,12 @@ h2 {
     filter 0.2s ease-in-out;
 }
 
-#links a:hover {
-  transform: scale(1.1);
-}
-
 #links a:hover .bi {
   color: var(--accent-color);
   filter: drop-shadow(2px 2px 2px var(--shadow-color));
 }
 
 @media (prefers-reduced-motion: reduce) {
-  #links a,
   #links .bi {
     transition: none;
   }
