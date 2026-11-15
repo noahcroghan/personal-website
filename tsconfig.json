@@ -16,5 +16,5 @@
     "skipLibCheck": true,
     "noEmit": true
   },
-  "include": ["index.ts", "vite.config.ts", "functions/**/*.ts"]
+  "include": ["*.ts", "functions/**/*.ts"]
 }
