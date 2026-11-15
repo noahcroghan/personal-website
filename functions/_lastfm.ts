@@ -12,7 +12,10 @@ export async function fetchRecentTracks({
   }
 
   if (!username) {
-    return Response.json({ error: "Last.fm username not configured" }, { status: 500 });
+    return Response.json(
+      { error: "Last.fm username not configured" },
+      { status: 500 },
+    );
   }
 
   const url = `https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=${encodeURIComponent(username)}&api_key=${encodeURIComponent(apiKey)}&format=json&limit=1`;
