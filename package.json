@@ -9,12 +9,17 @@
     "build": "vite build && shx cp -r functions dist/",
     "preview": "bun run build && vite preview",
     "typecheck": "tsc",
-    "lint": "eslint ."
+    "lint": "eslint . && bun run lint:md",
+    "lint:md": "markdownlint-cli2 \"**/*.md\"",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
     "@typescript/native": "npm:typescript@^7.0.2",
     "eslint": "^10.15.0",
+    "markdownlint-cli2": "^0.24.1",
+    "prettier": "^3.10.1",
     "shx": "^0.4.0",
     "typescript": "npm:@typescript/typescript6@^6.0.2",
     "typescript-eslint": "^8.72.2",
