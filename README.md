@@ -9,24 +9,23 @@ featuring social links and a real-time Last.fm "now playing" widget.
 
 ## Local Development
 
-1: Clone and enter the project:
+1. Clone and enter the project:
 
-```bash
-git clone https://github.com/noahcroghan/personal-website.git
-cd personal-website
-```
+   ```bash
+   git clone https://github.com/noahcroghan/personal-website.git
+   cd personal-website
+   ```
 
-2: Set up environment variables:
+2. Set up environment variables:
 
-Copy `.env.example` to `.env` and fill in your [Last.fm API key](https://www.last.fm/api/accounts)
-and username.
+   Copy `.env.example` to `.env` and fill in your [Last.fm API key](https://www.last.fm/api/accounts) and username.
 
-3: Install [dependencies](https://bun.sh) and start the dev server:
+3. Install [dependencies](https://bun.sh) and start the dev server:
 
-```bash
-bun install
-bun run dev
-```
+   ```bash
+   bun install
+   bun run dev
+   ```
 
 ## Building
 
@@ -36,19 +35,15 @@ To build the website, run the following:
 bun run build
 ```
 
-This will go through the process of building the website with [Vite](https://vite.dev).
-It also copies `functions/` into `dist/`, which Cloudflare Pages compiles into a
-Function on deploy.
+This will go through the process of building the website with [Vite](https://vite.dev). It also copies `functions/` into `dist/`, which Cloudflare Pages compiles into a Function on deploy.
 
-The site is written in [TypeScript](https://www.typescriptlang.org). Vite strips
-types during the build without checking them, and Cloudflare Pages compiles the
-Function in `functions/` on deploy, so run the type checker separately:
+The site is written in [TypeScript](https://www.typescriptlang.org). Vite strips types during the build without checking them, and Cloudflare Pages compiles the Function in `functions/` on deploy, so run the type checker separately:
 
 ```bash
 bun run typecheck
 ```
 
-Lint with [ESLint](https://eslint.org):
+Lint the code with [ESLint](https://eslint.org) and the Markdown with [markdownlint](https://github.com/DavidAnson/markdownlint-cli2):
 
 ```bash
 bun run lint
@@ -56,11 +51,9 @@ bun run lint
 
 ## Deploying
 
-- This website is deployed using [Cloudflare Pages](https://pages.cloudflare.com).
-  - Set `LASTFM_API_KEY` and `LASTFM_USERNAME` as Pages Function secrets in the
-    project's dashboard settings, so `functions/now-playing.ts` can read them
-    server-side at request time. These are never exposed to the client.
-- Set the framework to none and follow Vite's [build instructions](https://vite.dev/guide/static-deploy.html).
+- This website is deployed using [Cloudflare Pages](https://pages.cloudflare.com)
+  - Set `LASTFM_API_KEY` and `LASTFM_USERNAME` as Pages Function secrets in the project's dashboard settings, so `functions/now-playing.ts` can read them server-side at request time. These are never exposed to the client.
+- Set the framework to none and follow Vite's [build instructions](https://vite.dev/guide/static-deploy.html)
 
 ## Credits
 
@@ -70,4 +63,4 @@ bun run lint
 
 ## License
 
-[MIT License](./LICENSE).
+[MIT](./LICENSE)
