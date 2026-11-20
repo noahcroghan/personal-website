@@ -1,8 +1,7 @@
 {
   "name": "personal-website",
-  "private": false,
+  "private": true,
   "license": "MIT",
-  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
