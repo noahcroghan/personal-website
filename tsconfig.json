@@ -16,5 +16,5 @@
     "skipLibCheck": true,
     "noEmit": true
   },
-  "include": ["*.ts", "functions/**/*.ts"]
+  "include": ["index.ts", "functions/**/*.ts"]
 }

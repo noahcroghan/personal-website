@@ -1,0 +1,12 @@
+{
+  // Tooling runs locally under Node (`*.config.ts`) and Bun (`scripts/`).
+  // Bun's types include Node's, and checking this code separately keeps
+  // globals such as `process`, `Buffer` and `Bun` out of the browser code and
+  // the Pages Function covered by `tsconfig.json`.
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "lib": ["ESNext"],
+    "types": ["bun"]
+  },
+  "include": ["*.config.ts", "scripts/**/*.ts"]
+}
