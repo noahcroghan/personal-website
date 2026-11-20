@@ -114,6 +114,12 @@ footer {
   opacity: 1;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  #music-status {
+    transition: none;
+  }
+}
+
 #not-found-links {
   display: flex;
   justify-content: space-between;
