@@ -1,3 +1,4 @@
+import "virtual:bootstrap-icons.css";
 import type { NowPlaying } from "./functions/_spotify.ts";
 
 type Track = NonNullable<NowPlaying["track"]>;
@@ -21,6 +22,7 @@ function renderTrack(
 
   const icon = document.createElement("i");
   icon.className = "bi bi-music-note";
+  icon.ariaHidden = "true";
   heading.append(icon);
 
   const name = document.createElement("b");

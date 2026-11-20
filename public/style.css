@@ -72,9 +72,19 @@ h2 {
 
 #links .bi {
   display: block;
-  width: 2em;
-  height: 2em;
+
+  /* A fixed box keeps the layout still while the icon font loads. */
+  width: 1em;
+  height: 1em;
+
+  /* Drops the glyph's text baseline, so the icons align like images. */
+  contain: layout;
+  font-size: 2em;
+  line-height: 1;
   color: var(--foreground-color);
+
+  /* The glyphs would otherwise inherit `body`'s text-shadow on top of this. */
+  text-shadow: none;
   filter: drop-shadow(0 2px 2px var(--shadow-color));
   transition:
     color 0.2s ease-in-out,
@@ -93,6 +103,11 @@ h2 {
   #links .bi {
     transition: none;
   }
+}
+
+/* Icon glyphs are 1em wide; reserve that before the icon font loads. */
+.bi::before {
+  width: 1em;
 }
 
 footer {
