@@ -63,4 +63,6 @@ bun run lint
 
 ## License
 
-[MIT](./LICENSE)
+The source code is licensed under [MIT](./LICENSE).
+
+Personal content, such as my likeness (`docs/preview.png`, `public/headshot.jpg`), is all rights reserved.
