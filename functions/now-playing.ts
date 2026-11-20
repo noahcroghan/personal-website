@@ -1,8 +1,9 @@
-import { fetchRecentTracks } from "./_lastfm";
+import { fetchNowPlaying } from "./_spotify";
 
 interface Env {
-  LASTFM_API_KEY?: string;
-  LASTFM_USERNAME?: string;
+  SPOTIFY_CLIENT_ID?: string;
+  SPOTIFY_CLIENT_SECRET?: string;
+  SPOTIFY_REFRESH_TOKEN?: string;
 }
 
 /**
@@ -14,8 +15,9 @@ interface Env {
 type PagesFunction<E> = (context: { env: E }) => Response | Promise<Response>;
 
 export const onRequest: PagesFunction<Env> = async (context) => {
-  return fetchRecentTracks({
-    apiKey: context.env.LASTFM_API_KEY,
-    username: context.env.LASTFM_USERNAME,
+  return fetchNowPlaying({
+    clientId: context.env.SPOTIFY_CLIENT_ID,
+    clientSecret: context.env.SPOTIFY_CLIENT_SECRET,
+    refreshToken: context.env.SPOTIFY_REFRESH_TOKEN,
   });
 };

@@ -1,24 +1,16 @@
-interface LastFmArtist {
-  "#text": string;
-}
+import type { NowPlaying } from "./functions/_spotify.ts";
 
-interface LastFmTrack {
-  name: string;
-  artist: LastFmArtist;
-  "@attr"?: {
-    nowplaying?: string;
-  };
-}
+type Track = NonNullable<NowPlaying["track"]>;
 
-interface RecentTracksResponse {
-  recenttracks?: {
-    track?: LastFmTrack[];
-  };
-}
-
-function renderTrack(container: HTMLElement, track: LastFmTrack): void {
+function renderTrack(
+  container: HTMLElement,
+  track: Track,
+  isPlaying: boolean,
+): void {
   const heading = document.createElement("h2");
-  heading.append("What am I listening to? ");
+  heading.append(
+    isPlaying ? "What am I listening to? " : "What was I listening to? ",
+  );
 
   const icon = document.createElement("i");
   icon.className = "bi bi-music-note";
@@ -27,7 +19,7 @@ function renderTrack(container: HTMLElement, track: LastFmTrack): void {
   const name = document.createElement("b");
   name.textContent = track.name;
 
-  container.replaceChildren(heading, name, ` by ${track.artist["#text"]}`);
+  container.replaceChildren(heading, name, ` by ${track.artist}`);
   container.classList.add("is-visible");
 }
 
@@ -39,18 +31,15 @@ async function getNowPlaying(): Promise<void> {
       throw new Error(`Server responded with status: ${response.status}`);
     }
 
-    const lastFmResponse = (await response.json()) as RecentTracksResponse;
-    const recentTrack = lastFmResponse?.recenttracks?.track?.[0];
+    const { track, isPlaying } = (await response.json()) as NowPlaying;
 
     const musicStatusContainer = document.getElementById("music-status");
 
-    if (!musicStatusContainer || !recentTrack) {
+    if (!musicStatusContainer || !track) {
       return;
     }
 
-    // The same markup covers both the currently playing and the most
-    // recently played track.
-    renderTrack(musicStatusContainer, recentTrack);
+    renderTrack(musicStatusContainer, track, isPlaying);
   } catch (e) {
     console.error("Could not fetch music status", e);
   }

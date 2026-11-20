@@ -13,7 +13,8 @@
     "format:check": "prettier --check .",
     "lint": "bun --bun eslint . && bun run lint:md && bun run lint:css",
     "lint:md": "markdownlint-cli2 \"**/*.md\"",
-    "lint:css": "stylelint \"**/*.css\""
+    "lint:css": "stylelint \"**/*.css\"",
+    "spotify:auth": "bun scripts/spotify-auth.ts"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",

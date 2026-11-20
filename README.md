@@ -1,7 +1,7 @@
 # Personal Website
 
 This repository contains the code for my personal link-in-bio site,
-featuring social links and a real-time Last.fm "now playing" widget.
+featuring social links and a real-time Spotify "now playing" widget.
 
 ## Preview
 
@@ -16,14 +16,24 @@ featuring social links and a real-time Last.fm "now playing" widget.
    cd personal-website
    ```
 
-2. Set up environment variables:
-
-   Copy `.env.example` to `.env` and fill in your [Last.fm API key](https://www.last.fm/api/accounts) and username.
-
-3. Install [dependencies](https://bun.sh) and start the dev server:
+2. Install [dependencies](https://bun.sh):
 
    ```bash
    bun install
+   ```
+
+3. Set up Spotify:
+   1. Create an app in the [Spotify Developer Dashboard](https://developer.spotify.com/dashboard) with the Web API enabled and `http://127.0.0.1:8888/callback` as a redirect URI. Development Mode apps require the owner to have Spotify Premium.
+   2. Copy `.env.example` to `.env` and fill in the app's client ID and secret.
+   3. Authorize the site to read your playback, which saves a refresh token to `.env`:
+
+      ```bash
+      bun run spotify:auth
+      ```
+
+4. Start the dev server:
+
+   ```bash
    bun run dev
    ```
 
@@ -52,8 +62,12 @@ bun run lint
 ## Deploying
 
 - This website is deployed using [Cloudflare Pages](https://pages.cloudflare.com)
-  - Set `LASTFM_API_KEY` and `LASTFM_USERNAME` as Pages Function secrets in the project's dashboard settings, so `functions/now-playing.ts` can read them server-side at request time. These are never exposed to the client.
+  - Set `SPOTIFY_CLIENT_ID`, `SPOTIFY_CLIENT_SECRET`, and `SPOTIFY_REFRESH_TOKEN` as Pages Function secrets in the project's dashboard settings, so `functions/now-playing.ts` can read them server-side at request time. These are never exposed to the client.
 - Set the framework to none and follow Vite's [build instructions](https://vite.dev/guide/static-deploy.html)
+
+### Renewing Spotify Authorization
+
+Spotify [expires refresh tokens six months after authorization](https://developer.spotify.com/documentation/web-api/tutorials/refreshing-tokens), and refreshing an access token doesn't extend that. Before then, rerun `bun run spotify:auth`, copy the new `SPOTIFY_REFRESH_TOKEN` from `.env` into the Pages secrets, and redeploy.
 
 ## Credits
 
