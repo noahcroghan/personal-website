@@ -1,0 +1,72 @@
+name: Spotify reauthorization reminder
+
+# Spotify refresh tokens expire six months after authorization and don't
+# expose their age, so `bun run spotify:auth` records the date in
+# `.github/spotify-authorized-at`. This opens an issue a month before expiry,
+# and closes it once a renewal pushes a newer date.
+#
+# GitHub disables scheduled workflows in public repositories after 60 days
+# without activity; merged Dependabot updates keep this one running.
+
+on:
+  schedule:
+    - cron: "0 15 * * 1"
+  push:
+    branches: [main]
+    paths: [.github/spotify-authorized-at]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  remind:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Open or close the renewal issue
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TITLE: Renew Spotify authorization
+        run: |
+          file=.github/spotify-authorized-at
+          if [[ ! -f $file ]]; then
+            echo "No authorization date recorded in $file"
+            exit 0
+          fi
+
+          authorized=$(<"$file")
+          expires=$(date -u -d "$authorized + 6 months" +%F)
+          remind=$(date -u -d "$expires - 30 days" +%F)
+          today=$(date -u +%F)
+          echo "Authorized $authorized, expires $expires, reminding from $remind"
+
+          existing=$(gh issue list --state open --search "\"$TITLE\" in:title" \
+            --json number,title --jq '.[] | select(.title == $ENV.TITLE) | .number' |
+            head -n 1)
+
+          if [[ $today < $remind ]]; then
+            if [[ -n $existing ]]; then
+              gh issue close "$existing" --comment \
+                "Renewed on $authorized; the token now expires on $expires."
+            fi
+            exit 0
+          fi
+
+          if [[ -n $existing ]]; then
+            echo "Reminder already open: #$existing"
+            exit 0
+          fi
+
+          gh issue create --title "$TITLE" --assignee "$GITHUB_REPOSITORY_OWNER" \
+            --body "$(cat <<EOF
+          The Spotify refresh token authorized on $authorized expires on **$expires**, after which the music widget stops working.
+
+          1. Run \`bun run spotify:auth\`
+          2. Copy \`SPOTIFY_REFRESH_TOKEN\` from \`.env\` into the Cloudflare Pages secrets and redeploy
+          3. Commit and push the updated \`$file\`, which closes this issue
+          EOF
+          )"

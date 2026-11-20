@@ -69,6 +69,8 @@ bun run lint
 
 Spotify [expires refresh tokens six months after authorization](https://developer.spotify.com/documentation/web-api/tutorials/refreshing-tokens), and refreshing an access token doesn't extend that. Before then, rerun `bun run spotify:auth`, copy the new `SPOTIFY_REFRESH_TOKEN` from `.env` into the Pages secrets, and redeploy.
 
+The script also records the date in `.github/spotify-authorized-at`; commit it. A [scheduled workflow](./.github/workflows/spotify-reauth-reminder.yml) opens an issue a month before the token expires, and closes it once a newer date is pushed.
+
 ## Credits
 
 - Icons are courtesy of [Bootstrap Icons](https://icons.getbootstrap.com/)

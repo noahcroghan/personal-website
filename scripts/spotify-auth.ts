@@ -12,6 +12,9 @@ const PORT = 8888;
 const REDIRECT_URI = `http://127.0.0.1:${PORT}/callback`;
 const SCOPES = ["user-read-currently-playing", "user-read-recently-played"];
 const ENV_FILE = ".env";
+// Tracked so `.github/workflows/spotify-reauth-reminder.yml` can open an
+// issue before the refresh token expires; Spotify doesn't expose its age.
+const AUTHORIZED_AT_FILE = ".github/spotify-authorized-at";
 
 const clientId = process.env.SPOTIFY_CLIENT_ID;
 const clientSecret = process.env.SPOTIFY_CLIENT_SECRET;
@@ -113,6 +116,10 @@ async function handleCallback(params: URLSearchParams) {
   const { access_token, refresh_token } = await exchangeCode(code);
   await verify(access_token);
   await saveRefreshToken(refresh_token);
+  await Bun.write(
+    AUTHORIZED_AT_FILE,
+    `${new Date().toISOString().slice(0, 10)}\n`,
+  );
 }
 
 const { promise: finished, resolve, reject } = Promise.withResolvers<void>();
@@ -156,10 +163,13 @@ if (opener) {
 
 try {
   await finished;
-  console.log(`Saved SPOTIFY_REFRESH_TOKEN to ${ENV_FILE}.
+  console.log(`Saved SPOTIFY_REFRESH_TOKEN to ${ENV_FILE}. It expires in six months.
 
-Next, copy it into the Cloudflare Pages project's secrets (Settings > Variables
-and Secrets) and redeploy. It expires in six months.`);
+Next:
+  1. Copy it into the Cloudflare Pages project's secrets (Settings > Variables
+     and Secrets) and redeploy.
+  2. Commit and push ${AUTHORIZED_AT_FILE}, so the renewal reminder
+     knows when to fire.`);
 } catch (error) {
   console.error(error instanceof Error ? error.message : error);
   process.exitCode = 1;
