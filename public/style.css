@@ -18,6 +18,7 @@ body {
   align-items: center;
   justify-content: center;
   height: 100vh;
+  height: 100dvh;
   font-family: "Space Mono", monospace;
   color: var(--foreground-color);
   text-shadow: var(--shadow);
@@ -112,7 +113,10 @@ h2 {
 
 footer {
   position: absolute;
+  inset-inline: 0;
   bottom: 2em;
+  display: flex;
+  justify-content: center;
 }
 
 #music-status {
