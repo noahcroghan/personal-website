@@ -116,6 +116,11 @@ function bootstrapIcons(sources: string[]): Plugin {
 }
 
 export default defineConfig(({ mode }) => ({
+  build: {
+    rolldownOptions: {
+      input: ["index.html", "404.html"],
+    },
+  },
   plugins: [
     nowPlayingProxy(loadEnv(mode, ".", "")),
     bootstrapIcons(["index.html", "index.ts"]),
