@@ -81,4 +81,4 @@ The script also records the date in `.github/spotify-authorized-at`; commit it. 
 
 The source code is licensed under [MIT](./LICENSE).
 
-Personal content, such as my likeness (`docs/preview.png`, `public/headshot-*.webp`), is all rights reserved.
+Personal content, such as my likeness (`docs/preview.png`, `public/headshot.webp`), is all rights reserved.
