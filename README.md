@@ -74,7 +74,7 @@ The script also records the date in `.github/spotify-authorized-at`; commit it. 
 ## Credits
 
 - Icons are courtesy of [Bootstrap Icons](https://icons.getbootstrap.com/)
-- Font used is [Space Mono](https://fonts.google.com/specimen/Space+Mono)
+- Font used is [Space Mono](https://fonts.google.com/specimen/Space+Mono), self-hosted via [Fontsource](https://fontsource.org/fonts/space-mono)
   - Font License: [SIL Open Font License, Version 1.1](https://openfontlicense.org/open-font-license-official-text)
 
 ## License

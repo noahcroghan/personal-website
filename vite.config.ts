@@ -115,6 +115,31 @@ function bootstrapIcons(sources: string[]): Plugin {
   };
 }
 
+function preloadFonts(pattern: RegExp): Plugin {
+  return {
+    name: "preload-fonts",
+    apply: "build",
+    transformIndexHtml: {
+      order: "post",
+      handler: (_html, { bundle }) =>
+        Object.keys(bundle ?? {})
+          .filter((fileName) => pattern.test(fileName))
+          .sort()
+          .map((fileName) => ({
+            tag: "link",
+            attrs: {
+              rel: "preload",
+              href: `/${fileName}`,
+              as: "font",
+              type: "font/woff2",
+              crossorigin: true,
+            },
+            injectTo: "head",
+          })),
+    },
+  };
+}
+
 export default defineConfig(({ mode }) => ({
   build: {
     rolldownOptions: {
@@ -124,5 +149,6 @@ export default defineConfig(({ mode }) => ({
   plugins: [
     nowPlayingProxy(loadEnv(mode, ".", "")),
     bootstrapIcons(["index.html", "index.ts"]),
+    preloadFonts(/space-mono-latin-(400|700)-normal-[\w-]+\.woff2$/),
   ],
 }));
